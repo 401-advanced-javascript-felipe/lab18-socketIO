@@ -16,9 +16,11 @@ const alterFile = (file) => {
       data = utils.toUpper(data);
       utils.writeFile(file, data);
     })
-    .then(() => socket.emit('file-save', 'file was saved'))
+    .then(() => socket.emit('file-save', 'file saved'))
     .catch(errorEmitter);
 };
 
 let file = process.argv.slice(2).shift();
 alterFile(file);
+
+module.exports = errorEmitter;
