@@ -4,7 +4,10 @@
   "description": "## Project Name",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "startServer": "node ./server/server.js",
+    "startLogger": "node ./logger/logger.js",
+    "start": "node app.js ./files/test.txt",
+    "startError": "node app.js ./files/bad.txt",
     "lint": "eslint \"**/**.js\"",
     "test": "jest --verbose --coverage",
     "test-watch": "jest --watchAll --verbose --coverage",

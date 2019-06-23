@@ -44,31 +44,30 @@ describe('utils.readFile()', () => {
 });
 
 
+// 9:34 time stamp, 9:40 for socket.io-client
+describe('utils.writeFile()', () => {
+  it('should reject and return invalid file', () => {
+    expect.assertions(1);
 
-// describe('utils.writeFile()', () => {
-//   it('should reject and return invalid file', () => {
-//     expect.assertions(1);
-
-//     let file = 'bad.txt';
-//     let string = 'sample string of data';
+    let file = 'bad.txt';
+    let string = 'sample string of data';
     
-//     return expect(utils.writeFile(file, string)).rejects.toMatch('Invalid File');
-//   });
+    return expect(utils.writeFile(file, string)).rejects.toMatch('Invalid File');
+  });
 
 
-//   Still needs work
-//   it('should resolve and save to file', () => {
-//     expect.assertions(1);
-//     let file = 'good.txt';
-//     let string = 'sample string of data';
+  it('should resolve and save to file', () => {
+    expect.assertions(1);
+    let file = 'good.txt';
+    let string = 'sample string of data';
 
-//     return utils.writeFile(file, string)
-//       .then(data => {
-//         console.log(data);
-//         expect(data).toMatch('sample string of data');
-//       });
+    return utils.writeFile(file, string)
+      .then(data => {
+        console.log(data);
+        expect(data).toBe(undefined);
+      });
 
-//   });
+  });
 
 
-// });
+});

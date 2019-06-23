@@ -5,9 +5,9 @@ const utils = require('./src/utils');
 const io = require('socket.io-client');
 const socket = io.connect('http://localhost:3000');
 
-let errorEmitter = (error) => {
-  socket.emit('error', error);
-};
+// let errorEmitter = (error) => {
+//   socket.emit('error', error);
+// };
 
 const alterFile = (file) => {
 
@@ -17,10 +17,10 @@ const alterFile = (file) => {
       utils.writeFile(file, data);
     })
     .then(() => socket.emit('file-save', 'file saved'))
-    .catch(errorEmitter);
+    .catch(error => socket.emit('file-error', error));
 };
 
 let file = process.argv.slice(2).shift();
 alterFile(file);
 
-module.exports = errorEmitter;
+// module.exports = errorEmitter;

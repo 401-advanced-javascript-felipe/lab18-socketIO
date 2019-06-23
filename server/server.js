@@ -9,7 +9,7 @@ io.on('connection', socket => {
     io.emit('message', payload);
   });
 
-  socket.on('error', payload =>{
+  socket.on('file-error', payload =>{
     io.emit('message', payload);
   });
 

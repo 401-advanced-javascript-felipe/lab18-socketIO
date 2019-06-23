@@ -11,11 +11,14 @@ exports.readFile = (file, cb) => {
   }
 };
 
-exports.writeFile = (file, cb) => {
+exports.writeFile = (file, buffer, cb) => {
   if( file.match(/bad/i) ){
     cb('Invalid File');
   }
+  else if (! Buffer.isBuffer(buffer)) {
+    cb('Invalid Buffer', undefined);
+  }
   else {
-    cb(undefined, 'file saved');
+    cb(undefined, undefined);
   }
 };
