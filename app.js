@@ -1,17 +1,26 @@
 'use strict';
 
-const fs = require('fs');
+const utils = require('./src/utils');
+
+const io = require('socket.io-client');
+const socket = io.connect('http://localhost:3000');
+
+// let errorEmitter = (error) => {
+//   socket.emit('error', error);
+// };
 
 const alterFile = (file) => {
-  fs.readFile( file, (err, data) => {
-    if(err) { throw err; }
-    let text = data.toString().toUpperCase();
-    fs.writeFile( file, Buffer.from(text), (err, data) => {
-      if(err) { throw err; }
-      console.log(`${file} saved`);
-    });
-  });
+
+  utils.readFile(file)
+    .then(data => {
+      data = utils.toUpper(data);
+      utils.writeFile(file, data);
+    })
+    .then(() => socket.emit('file-save', 'file saved'))
+    .catch(error => socket.emit('file-error', error));
 };
 
 let file = process.argv.slice(2).shift();
 alterFile(file);
+
+// module.exports = errorEmitter;
