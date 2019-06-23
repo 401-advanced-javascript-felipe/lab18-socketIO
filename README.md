@@ -6,12 +6,6 @@
 * [submission PR](https://github.com/401-advanced-javascript-felipe/lab18-socketIO/pull/1)
 * [travis](https://travis-ci.com/401-advanced-javascript-felipe/lab18-socketIO/builds/116222105)
 
-### Links and Resources
-* [submission PR](http://xyz.com)
-* [travis](http://xyz.com)
-* [back-end](http://xyz.com) (when applicable)
-* [front-end](http://xyz.com) (when applicable)
-
 ### Modules
 #### `server.js`
 Creates a socket.io server. Setups listeners for file-save and file-error events. When they occur, emit() the appropriate event and payload to clients (specficially, the ‘logger’ will pick this up).
@@ -35,7 +29,7 @@ Open 3 terminal windows
 4. (Optional) `npm run startError` - Same as `npm start` but will emit the `file-error` message
   
 #### Tests
-`npm test` - Will test for functions that I have written.
+`npm test` - Will test for functions that I have written. and will mock the fs module.
 
 #### UML
-![](./assets/----.jpg)
+![](./assets/lab18.jpg)
